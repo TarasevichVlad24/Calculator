@@ -21,19 +21,26 @@ public class ConsoleApplication implements Application{
         while (true) {
             writer.write("Введите операцию");
             String type = reader.readString();
-            writer.write("Введите число ");
-            double num1 = reader.readDouble();
-            writer.write("Введите еще одно число");
-            double num2 = reader.readDouble();
-            Operation operation = new Operation(num1, num2, type);
-            Operation result = calculator.calculate(operation);
-            try {
-                fileWriter.write(result.toString());
-                fileWriter.flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if(type.equals("check")) {
+                calculator.checkHistory();
+            }else if(){
+                System.out.println("Операции не существует");
+            }else {
+                writer.write("Введите число ");
+                double num1 = reader.readDouble();
+                writer.write("Введите еще одно число");
+                double num2 = reader.readDouble();
+                Operation operation = new Operation(num1, num2, type);
+                Operation result = calculator.calculate(operation);
+                try {
+                    fileWriter.write(result.toString());
+                    fileWriter.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                writer.write("Результа = " + result);
             }
-            writer.write("Результа = " + result);
+
         }
     }
         private void checkFile(){

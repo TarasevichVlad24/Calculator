@@ -19,8 +19,7 @@ public class Calculator {
             case "div":
                 operation.setResult(div(operation.getNum1(),operation.getNum2()));
                 return operation;
-            case"check":
-                 checkHistory();
+
         }
         return null;
     }
@@ -36,7 +35,7 @@ public class Calculator {
     private static double div(double a, double b){
         return a/b;
     }
-    private static void checkHistory(){
+    public static void checkHistory(){
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("history.txt"));
             String line;
